@@ -5,7 +5,7 @@ from transformers import AutoProcessor, AutoModelForVision2Seq
 
 # image = Image.open(open("/Users/soumya/Desktop/SS/Screenshot 2023-08-02 at 1.54.25 AM.png", "rb"))
 
-model = AutoModelForVision2Seq.from_pretrained("microsoft/kosmos-2-patch14-224").to("cpu")
+model = AutoModelForVision2Seq.from_pretrained("microsoft/kosmos-2-patch14-224").to("cuda")
 processor = AutoProcessor.from_pretrained("microsoft/kosmos-2-patch14-224")
 
 prompt = "<grounding> Describe the main features of this image"
@@ -24,7 +24,7 @@ def main():
 
         start = time.time_ns()
         prompts = [ prompt for _ in range(len(images)) ]
-        inputs = processor(text=prompts, images=images, return_tensors="pt")
+        inputs = processor(text=prompts, images=images, return_tensors="pt").to("cuda")
 
         generated_ids = model.generate(
             pixel_values=inputs["pixel_values"],
