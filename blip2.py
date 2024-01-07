@@ -12,7 +12,7 @@ raw_image = Image.open(requests.get(img_url, stream=True).raw)
 
 print('Image loaded')
 
-question = "What is a detailed description of this image?"
+question = "What would be the main keywords you would use to describe this image?"
 qtext = f"Question: {question} Answer:"
 inputs = processor(raw_image, qtext, return_tensors="pt").to("cuda", torch.float16)
 print('Inputs loaded')
