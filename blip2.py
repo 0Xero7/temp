@@ -7,7 +7,7 @@ processor = Blip2Processor.from_pretrained("Salesforce/blip2-opt-2.7b")
 model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b". torch.dtype=torch.float16).to("cuda")
 
 img_url = input('Image URL : ') 
-raw_image = Image.open(requests.get(img_url, stream=True).raw).convert('RGB')
+raw_image = Image.open('./image.jpeg')
 
 question = "describe the main keywords you can gather from this image"
 inputs = processor(raw_image, question, return_tensors="pt").to("cuda", torch.float16)
