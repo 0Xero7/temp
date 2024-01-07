@@ -17,6 +17,6 @@ qtext = f"Question: {question} Answer:"
 inputs = processor(raw_image, qtext, return_tensors="pt").to("cuda")
 print('Inputs loaded')
 
-out = model.generate(**inputs)
+out = model.generate(**inputs, max_new_tokens=1000)
 print(out)
 print(processor.decode(out[0], skip_special_tokens=True).strip())
