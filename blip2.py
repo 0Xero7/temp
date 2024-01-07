@@ -1,4 +1,5 @@
 # pip install accelerate
+import torch
 import requests
 from PIL import Image
 from transformers import Blip2Processor, Blip2ForConditionalGeneration
