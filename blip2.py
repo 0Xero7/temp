@@ -6,7 +6,7 @@ from transformers import Blip2Processor, Blip2ForConditionalGeneration
 processor = Blip2Processor.from_pretrained("Salesforce/blip2-opt-2.7b")
 model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b").to("cuda")
 
-img_url = 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/demo.jpg' 
+img_url = input('Image URL : ') 
 raw_image = Image.open(requests.get(img_url, stream=True).raw).convert('RGB')
 
 question = "describe the main keywords you can gather from this image"
