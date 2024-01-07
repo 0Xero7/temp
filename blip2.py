@@ -17,4 +17,5 @@ inputs = processor(raw_image, question, return_tensors="pt").to("cuda", torch.fl
 print('Inputs loaded')
 
 out = model.generate(**inputs)
+print(out)
 print(processor.decode(out[0], skip_special_tokens=True).strip())
